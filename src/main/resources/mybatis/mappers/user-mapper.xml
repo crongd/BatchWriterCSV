@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.batchwritercsv.mappers.UserMapper">
+
+    <select id="all_select" resultType="com.batchwritercsv.dto.CsvDTO">
+        select sum(count) as count, store_area as Area from `store` group by store_area
+    </select>
+
+    <delete id="all_delete">
+        delete from `store`
+    </delete>
+
+</mapper>
