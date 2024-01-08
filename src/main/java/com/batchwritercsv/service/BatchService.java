@@ -27,6 +27,7 @@ public class BatchService {
     }
 
 
+    @Scheduled(cron = "0 40 5 * * *")
     public void csv_writer() throws Exception {
         StringBuilder csv = new StringBuilder();
         csv.append("지역명, 총조회수 \n");
@@ -45,6 +46,8 @@ public class BatchService {
         String filePath = "src/main/resources/" + date + "_통계.csv";
 //        URI filePathUri = new URI(filePath);
         Files.writeString(Path.of(filePath), csv.toString(), StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+
+        userMapper.all_delete();
 
     }
 
